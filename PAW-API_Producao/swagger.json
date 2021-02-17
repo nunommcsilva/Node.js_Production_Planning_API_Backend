@@ -1,0 +1,2129 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Informação da RestAPI Produção",
+        "version": "1.0.0",
+        "title": "PAW - RestAPI Produção",
+        "contact": {
+            "name": "Grupo - Carlos Pinto, João Pires, Nuno Silva, Sérgio Rodrigues"
+        }
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:3000",
+    "basePath": "/",
+    "paths": {
+        "/bomgroups": {
+            "get": {
+                "summary": "Obter todos os bomgroups",
+                "description": "Obter todos os bomgroups",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "operação com sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Criar novo bomgroup",
+                "description": "Criar novo bomgroup",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "bomgroup",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/bomgroups/bomgroup?page={nPaginas}&limit={limite}": {
+            "get": {
+                "summary": "Obter todos os bomgroups ordenados, definindo nº de páginas e limite",
+                "description": "Obter todos os bomgroups ordenados, definindo nº de páginas e limite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "nPaginas",
+                        "description": "Número de páginas"
+                    },
+                    {
+                        "in": "path",
+                        "name": "limite",
+                        "description": "Limite de grupos a apresentar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/bomgroups/{groupId}": {
+            "get": {
+                "summary": "Obter bomgroup por id",
+                "description": "Obter bomgroup por id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "groupId",
+                        "description": "id do bomgroup a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Bomgroups"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Atualizar bomgroup",
+                "description": "Atualizar bomgroup",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "id do bomgroup a alterar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "item do bomgroup a alterar",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Apagar bomgroup",
+                "description": "Apagar bomgroup",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "id do bomgroup a eliminar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/items": {
+            "get": {
+                "summary": "Obter todos os items",
+                "description": "Obter todos os items",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "operação com sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Criar novo item",
+                "description": "Criar novo bomgroupitem",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "item",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/items/item?page={nPaginas}&limit={limite}": {
+            "get": {
+                "summary": "Obter todos os items ordenados, definindo nº de páginas e limite",
+                "description": "Obter todos os items ordenados, definindo nº de páginas e limite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "nPaginas",
+                        "description": "Número de páginas"
+                    },
+                    {
+                        "in": "path",
+                        "name": "limite",
+                        "description": "Limite de items a apresentar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/items/{itemId}": {
+            "get": {
+                "summary": "Obter item por id",
+                "description": "Obter item por id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "itemId",
+                        "description": "id do item a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Item"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Atualizar item",
+                "description": "Atualizar item",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "description": "id do item a alterar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "item a alterar",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Apagar item",
+                "description": "Apagar item",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "description": "id do item a eliminar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/productionorders": {
+            "get": {
+                "summary": "Obter todas as ordens de produção",
+                "description": "Obter todas as ordens de produção",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "operação com sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Criar nova ordem de produção",
+                "description": "Criar nova ordem de produção",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "ordem de produção",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/productionorders/productionorder?page={nPaginas}&limit={limite}": {
+            "get": {
+                "summary": "Obter todas as ordens de produção, ordenadas por status e definindo nº de páginas e limite",
+                "description": "Obter todas as ordens de produção, ordenadas por status e definindo nº de páginas e limite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "nPaginas",
+                        "description": "Número de páginas"
+                    },
+                    {
+                        "in": "path",
+                        "name": "limite",
+                        "description": "Limite de ordens de produção a apresentar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/productionorders/{productionorderId}": { 
+            "get": {
+                "summary": "Obter ordem de produção por id",
+                "description": "Obter ordem de produção por id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "productionorderId",
+                        "description": "id da ordem de produção a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/ProductionOrders"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Atualizar ordem de produção",
+                "description": "Atualizar ordem de produção",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "productionorderId",
+                        "in": "path",
+                        "description": "id da ordem de produção a alterar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "ordem de produção a alterar",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Apagar ordem de produção",
+                "description": "Apagar ordem de produção",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "productionorderId",
+                        "in": "path",
+                        "description": "id da ordem de produção a eliminar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/purchaseorders": {
+            "get": {
+                "summary": "Obter todas as ordens de compra",
+                "description": "Obter todas as ordens de compra",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "operação com sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PurchaseOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Criar nova ordem de compra",
+                "description": "Criar nova ordem de compra",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "ordem de compra",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/PurchaseOrders"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PurchaseOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/purchaseorders/purchaseorder?page={nPaginas}&limit={limite}": {
+            "get": {
+                "summary": "Obter todas as ordens de compra, ordenadas por status e definindo nº de páginas e limite",
+                "description": "Obter todas as ordens de compra, ordenadas por status e definindo nº de páginas e limite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "nPaginas",
+                        "description": "Número de páginas"
+                    },
+                    {
+                        "in": "path",
+                        "name": "limite",
+                        "description": "Limite de ordens de compra a apresentar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PurchaseOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/purchaseorders/{purchaseorderId}": {
+            "get": {
+                "summary": "Obter ordem de compra por id",
+                "description": "Obter ordem de compra por id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "purchaseorderId",
+                        "description": "id da ordem de compra a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/PurchaseOrders"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PurchaseOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Atualizar ordem de produção",
+                "description": "Atualizar ordem de produção",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "purchaseorderId",
+                        "in": "path",
+                        "description": "id da ordem de compra a alterar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "ordem de compra a alterar",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/purchaseOrder"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PurchaseOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Apagar ordem de produção",
+                "description": "Apagar ordem de produção",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "purchaseorderId",
+                        "in": "path",
+                        "description": "id da ordem de produção a eliminar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PurchaseOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/traceabilityproductions": {
+            "get": {
+                "summary": "Obter toda a rastreabilidade de items produzidos",
+                "description": "Obter toda a rastreabilidade de items produzidos",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "operação com sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Criar novo rastreio de item produzido",
+                "description": "Criar novo rastreio de item produzido",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "rastreio de produção",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/traceabilityproductions/traceabilityproduction?page={nPaginas}&limit={limite}": {
+            "get": {
+                "summary": "Obter toda a rastreabilidade de items produzidos, ordenada por nº de lote, definindo nº de páginas e limite",
+                "description": "Obter toda a rastreabilidade de items produzidos, ordenada por nº de lote, definindo nº de páginas e limite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "nPaginas",
+                        "description": "Número de páginas"
+                    },
+                    {
+                        "in": "path",
+                        "name": "limite",
+                        "description": "Limite de rastreabilidade de items produzidos a apresentar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/traceabilityproductions/{traceId}": {
+            "get": {
+                "summary": "Obter rastreio de item produzido por id",
+                "description": "Obter rastreio de item produzido por id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "traceId",
+                        "description": "id do rastreio a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/TraceabilityProduction"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Atualizar rastreio de item produzido",
+                "description": "Atualizar rastreio de item produzido",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "traceId",
+                        "in": "path",
+                        "description": "id do rastreio a alterar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "rastreio a alterar",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Apagar rastreio de item produzido",
+                "description": "Apagar rastreio de item produzido",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "traceId",
+                        "in": "path",
+                        "description": "id do rastreio a eliminar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/traceabilitypurchases": {
+            "get": {
+                "summary": "Obter toda a rastreabilidade de items comprados",
+                "description": "Obter toda a rastreabilidade de items comprados",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "operação com sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Criar novo rastreio de item comprado",
+                "description": "Criar novo rastreio de item comprado",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "rastreio de compra",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/traceabilitypurchases/traceabilitypurchase?page={nPaginas}&limit={limite}": {
+            "get": {
+                "summary": "Obter toda a rastreabilidade de items comprados, ordenada por nº de lote, definindo nº de páginas e limite",
+                "description": "Obter toda a rastreabilidade de items comprados, ordenada por nº de lote, definindo nº de páginas e limite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "nPaginas",
+                        "description": "Número de páginas"
+                    },
+                    {
+                        "in": "path",
+                        "name": "limite",
+                        "description": "Limite de rastreabilidade de items comprados a apresentar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/traceabilitypurchases/{traceId}": {
+            "get": {
+                "summary": "Obter rastreio de item comprado por id",
+                "description": "Obter rastreio de item comprado por id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "traceId",
+                        "description": "id do rastreio a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/TraceabilityPurchase"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Atualizar rastreio de item comprado",
+                "description": "Atualizar rastreio de item comprado",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "traceId",
+                        "in": "path",
+                        "description": "id do rastreio a alterar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "rastreio a alterar",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Apagar rastreio de item comprado",
+                "description": "Apagar rastreio de item comprado",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "traceId",
+                        "in": "path",
+                        "description": "id do rastreio a eliminar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "summary": "Criar novo utilizador",
+                "description": "Criar novo utilizador",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "novo utilizador",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/UserRegistration"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserRegistration"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "summary": "Iniciar sessão",
+                "description": "Iniciar sessão",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Iniciar sessão",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": "object",
+                                "$ref": "#/definitions/UserLogin"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserLogin"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/user": {
+            "get": {
+                "summary": "Obter todos os utilizadores",
+                "description": "Obter todos os utilizadores",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "operação com sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserRegistration"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/user?page={nPaginas}&limit={limite}": {
+            "get": {
+                "summary": "Obter todos os utilizadores, ordenados por nome, definindo nº de páginas e limite",
+                "description": "Obter todos os utilizadores, ordenados por nome, definindo nº de páginas e limite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "nPaginas",
+                        "description": "Número de páginas"
+                    },
+                    {
+                        "in": "path",
+                        "name": "limite",
+                        "description": "Limite de utilizadores a apresentar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserRegistration"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/bomgroups?tags={querie}": {
+            "get": {
+                "summary": "Obter bomgroups através de pesquisa",
+                "description": "Obter bomgroups através de pesquisa",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "querie",
+                        "description": "termo a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Bomgroups"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Bomgroups"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/bomgroupsitem?tags={querie}": {
+            "get": {
+                "summary": "Obter bomgroupsitem através de pesquisa",
+                "description": "Obter bomgroupsitem através de pesquisa",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "querie",
+                        "description": "termo a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/BomgroupsItem"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BomgroupsItem"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/item?tags={querie}": {
+            "get": {
+                "summary": "Obter items através de pesquisa",
+                "description": "Obter items através de pesquisa",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "querie",
+                        "description": "termo a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Item"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/productionorders?tags={querie}": {
+            "get": {
+                "summary": "Obter ordens de produção através de pesquisa",
+                "description": "Obter ordens de produção através de pesquisa",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "querie",
+                        "description": "termo a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/ProductionOrders"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProductionOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/purchaseorders?tags={querie}": {
+            "get": {
+                "summary": "Obter ordens de compra através de pesquisa",
+                "description": "Obter ordens de compra através de pesquisa",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "querie",
+                        "description": "termo a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/PurchaseOrders"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PurchaseOrders"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/traceabilityproduction?tags={querie}": {
+            "get": {
+                "summary": "Obter rastreabilidade de items produzidos através de pesquisa",
+                "description": "Obter rastreabilidade de items produzidos através de pesquisa",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "querie",
+                        "description": "termo a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/TraceabilityProduction"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityProduction"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/traceabilitypurchase?tags={querie}": {
+            "get": {
+                "summary": "Obter rastreabilidade de items comprados através de pesquisa",
+                "description": "Obter rastreabilidade de items comprados através de pesquisa",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "querie",
+                        "description": "termo a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/TraceabilityPurchase"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TraceabilityPurchase"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/user?name={querie}": {
+            "get": {
+                "summary": "Obter utilizadores através de pesquisa pelo nome",
+                "description": "Obter utilizadores através de pesquisa pelo nome",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "querie",
+                        "description": "Nome a pesquisar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/UserRegistration"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserRegistration"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Bomgroups": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "cost": {
+                    "type": "integer"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Item": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "stock": {
+                    "type": "integer"
+                },
+                "lead_time": {
+                    "type": "integer"
+                },
+                "procured_item": {
+                    "type": "boolean"
+                },
+                "unite_measure": {
+                    "type": "string"
+                },
+                "selling_price": {
+                    "type": "number"
+                },
+                "default_storage_location": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "bomgroup_id": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "ProductionOrders": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "demand_quant": {
+                    "type": "integer"
+                },
+                "efect_quant": {
+                    "type": "integer"
+                },
+                "date_created": {
+                    "type": "string"
+                },
+                "date_start": {
+                    "type": "string"
+                },
+                "date_finish": {
+                    "type": "string"
+                },
+                "assigned_to": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "item_id": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "PurchaseOrders": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "demand_quant": {
+                    "type": "integer"
+                },
+                "efect_quant": {
+                    "type": "integer"
+                },
+                "date_created": {
+                    "type": "string"
+                },
+                "date_deliver": {
+                    "type": "string"
+                },
+                "vendor_name": {
+                    "type": "string"
+                },
+                "vendor_email": {
+                    "type": "string"
+                },
+                "price_per_unit": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "item_id": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "TraceabilityProduction": {
+            "type": "object",
+            "properties": {
+                "batch_number": {
+                    "type": "string"
+                },
+                "expiration_date": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "productionorder_id": {
+                    "type": "string"
+                },
+                "item_id": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "TraceabilityPurchase": {
+            "type": "object",
+            "properties": {
+                "batch_number": {
+                    "type": "string"
+                },
+                "expiration_date": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "purchaseorder_id": {
+                    "type": "string"
+                },
+                "item_id": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "UserRegistration": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "scope": {
+                            "type": "string",
+                            "enum": [
+                                "read-all",
+                                "read-psts",
+                                "manage-posts"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "UserLogin": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,252 @@
+GET http://localhost:3000/users/user
+###
+GET http://localhost:3000/users/user?page=1&limit=2
+###
+//token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDc1NjE1MjYsImV4cCI6MTYwNzY0NzkyNn0.wOwyMzwcidB5ijw3gjQu5onKmQRL_hWR8qSILuGfl-o
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "name": "Kent",
+    "email":"kent@gmail.com",
+    "password":"kent123456",
+    "role": {
+        "name":"admin",
+        "scopes":["read-all","manage-posts"]
+    }
+}
+###
+POST http://localhost:3000/auth/changepassword
+Content-Type: application/json
+
+{
+    "name":"Kent",
+    "oldPassword":"kent",
+    "newPassword":"kent123456"
+}
+###
+GET http://localhost:3000/admin
+###
+GET http://localhost:3000/admin
+Content-Type: application/json
+
+{
+    "name":"Sam",
+    "password":"sam123456"
+}
+###
+GET http://localhost:3000/admin
+Content-Type: application/json
+
+{
+    "name":"Dean",
+    "password":"dean123456"
+}
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "name":"Kent",
+    "password":"kent123456"
+}
+//**************************BOM GROUPS**********************
+###
+GET http://localhost:3000/bomgroups/bomgroup?page=1&limit=1
+###
+GET http://localhost:3000/bomgroups
+###
+GET http://localhost:3000/bomgroups/5fd4c8b744716d253c50f5f9
+###
+POST http://localhost:3000/bomgroups/
+Content-Type: application/json
+
+{
+    "name": "Mesa",
+    "cost": 100,
+    "notes": "Bom estado",
+    "tags": ["Mesa","200","Table","mesa","table"]
+}
+###
+PATCH  http://localhost:3000/bomgroups/5fd4c92644716d253c50f5fa
+Content-Type: application/json
+
+{
+    "notes":"Secretária preta em muito bom estado"
+}
+###
+DELETE http://localhost:3000/bomgroups/5fd4c92644716d253c50f5fa
+###
+//**************************************************************
+//**************************ITEMS*******************************
+###
+GET http://localhost:3000/items
+###
+GET http://localhost:3000/items/item?page=1&limit=1
+###
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{
+    "name": "Tampo",
+    "stock":500,
+    "lead_time":2,
+    "procured_item":true,
+    "unite_measure": "pcs",
+    "selling_price":30,
+    "default_storage_location":"default",
+    "notes":"Nothing to say",
+    "bomgroup_id":"5fd4e5cfaadf5e1220d9a0a6",
+    "tags":["tampo","tampos","tampo de madeira"]
+}
+###
+PATCH http://localhost:3000/items/5fd4cbae44716d253c50f5fd
+Content-Type: application/json
+
+{
+    "name": "Cabo de aço",
+    "stock":200,
+    "lead_time":2,
+    "procured_item":true,
+    "unite_measure": "pcs",
+    "selling_price":15,
+    "default_storage_location":"default",
+    "notes":"Nothing to say",
+    "tags":["cabo","cabos","cabo de aço","aço"]
+}
+###
+DELETE http://localhost:3000/items/5fd4cbae44716d253c50f5fd
+//**************************************************************
+//*************************PRODUCTION ORDERS********************
+###
+GET http://localhost:3000/productionorders
+###
+GET http://localhost:3000/productionorders/productionorder?page=1&limit=1
+###
+POST http://localhost:3000/productionorders
+Content-Type: application/json
+
+{
+    "status": "starting",
+    "demand_quant":10,
+    "efect_quant": 5,
+    "date_created": "2020-12-10T09:21:32.313Z",
+    "date_start": "2020-12-10T09:21:32.313Z",
+    //"date_finish":"2020-12-12T09:21:32.313Z",
+    "assigned_to":"Doe",
+    "notes":"Production started with some problems",
+    "item_id":"5fd4cbae44716d253c50f5fd",
+    "tags":["start","starting","production starting","2020","12","december","dezembro","Doe"]
+}
+###
+PATCH http://localhost:3000/productionorders/5fd4e13113bc4d01e8531e07
+Content-Type: application/json
+
+{
+    "status": "finished",
+    "date_finish":"2020-12-12T09:21:32.313Z"
+}
+###
+DELETE http://localhost:3000/productionorders/5fd539fe5ad9ce2d287894d1
+//**************************************************************
+//*************************PURCHASE ORDERS********************
+###
+GET http://localhost:3000/purchaseorders/purchaseorder?page=1&limit=1
+###
+POST http://localhost:3000/purchaseorders
+Content-Type: application/json
+
+{
+    "status": "finished",
+    "demand_quant":10,
+    "efect_quant": 5,
+    //"date_created": "2019-10-25T06:56:27.313Z",
+    //"date_deliver": "2019-10-25T06:56:27.313Z",
+    "vendor_name": "Michael",
+    "vendor_email":"michael@gmail.com",
+    "price_per_unit":50,
+    "currency":"Euros",
+    "free_text":"Nothing to say",
+    "item_id":"5fc94c1ffe138a16b86610c9"
+}
+###
+PATCH http://localhost:3000/purchaseorders/5fd3d1c382a06a2f28bbbe0d
+Content-Type: application/json
+
+{
+    "vendor_name": "Michael"
+}
+###
+DELETE http://localhost:3000/purchaseorders/5fd4d0df91be7f2468db8630
+//**************************************************************
+//*******************TRACEABILITY PRODUCTIONS*******************
+###
+GET http://localhost:3000/traceabilityproductions
+###
+GET http://localhost:3000/traceabilityproductions/traceabilityproduction?page=1&limit=2
+###
+POST http://localhost:3000/traceabilityproductions
+Content-Type: application/json
+
+{
+    "batch_number":"1234566",
+    "expiration_date":"2021-01-15T06:56:27.313Z",
+    "notes":"nothing to say for now",
+    "productionorder":"5fcd024cc6af952bc809818d",
+    "item_id":"5fc94c1ffe138a16b86610c9",
+    "tags":[
+        "1234566","2021","01","15","2021-01-15","finished","John","tampo"
+    ]
+}
+###
+PATCH http://localhost:3000/traceabilityproductions/5fd4ae915c2fb70488c85a08
+Content-Type: application/json
+
+{
+    "batch_number":"1234567",
+    "expiration_date":"2020-12-25T06:56:27.313Z",
+    "notes":"nothing to say for now",
+    "productionorder":"5fcd024cc6af952bc809818d",
+    "item_id":"5fc94c1ffe138a16b86610c9",
+    "tags":[
+        "123456","2020","12","25","2020-12-25","finished","Michael","tampo"
+    ]
+}
+###
+DELETE http://localhost:3000/traceabilityproductions/5fd4bc3519299e0fbc99d1bb
+//**************************************************************
+//********************TRACEABILITY PURCHASE*********************
+###
+GET http://localhost:3000/traceabilitypurchases
+###
+GET http://localhost:3000/traceabilitypurchases/traceabilitypurchase?page=1&limit=2
+###
+POST http://localhost:3000/traceabilitypurchases
+Content-Type: application/json
+
+{
+    "batch_number":"12344",
+    "expiration_date":"2020-12-30T06:56:27.313Z",
+    "notes":"nothing to say for now",
+    "purchaseorder":"5fcd022bc6af952bc809818b",
+    "item_id":"5fc94c1ffe138a16b86610c9",
+    "tags":[
+        "1234","2020","12","30","2020-12-30","finished","Michael","tampo"
+    ]
+}
+###
+PATCH http://localhost:3000/traceabilitypurchases/5fd4ae9b5c2fb70488c85a09
+Content-Type: application/json
+
+{
+    "batch_number":"134FU722I8",
+    "expiration_date":"2020-12-25T06:56:27.313Z",
+    "notes":"nothing to say for now",
+    "purchaseorder":"5fcd022bc6af952bc809818b",
+    "item_id":"5fc94c1ffe138a16b86610c9",
+    "tags":[
+        "134FU722I8","2020","12","25","2020-12-25","finished","Michael","tampo"
+    ]
+}
+###
+DELETE http://localhost:3000/traceabilitypurchases/5fd4b9eae4bb4e13a0996198
